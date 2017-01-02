@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/QlockTwo_v1_0.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=QlockTwo_v1_0.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=qlocktwov10.x/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/QlockTwo.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=QlockTwo.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=qlocktwo/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/qlocktwov10.x/bin
+makeDirectory ${TMPDIR}/qlocktwo/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/qlocktwov10.x.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/qlocktwo.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/qlocktwov10.x.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/qlocktwo.tar *
 checkReturnCode
 
 # Cleanup
