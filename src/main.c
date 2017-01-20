@@ -8,11 +8,12 @@
 uint8_t main( void )
 {  
     ledmatrix_init();
+    datetime_t time;
+    ledmatrix_set_time(time);
     
     while(1)
     {
         ledmatrix_display_next_row();
-        __delay_ms(1000);
     }
     
     return 0;
