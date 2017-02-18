@@ -6,7 +6,7 @@
 #include <xc.h>
 
 uint8_t main( void )
-{  
+{      
     ledmatrix_init();
     datetime_t time;
     ledmatrix_set_time(time);
