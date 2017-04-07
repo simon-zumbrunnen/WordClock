@@ -57,7 +57,7 @@ void ledmatrix_set_time( time_t time )
     uint8_t hour = time.hour;
     if ( time.minute > 22 )
     {
-        hour += 1; // ab der halben Stunde = VOR der nâ€°chsten Stunde
+        hour += 1; // ab der halben Stunde = VOR der nächsten Stunde
         
         if ( time.minute < 38 )
         {
@@ -84,7 +84,7 @@ void ledmatrix_set_time( time_t time )
         case 0:
         case 12:
         case 24:
-            ledmatrix_timerepr[7] = 0b000001111110; // ZWÃ·LFI         
+            ledmatrix_timerepr[7] = 0b000001111110; // ZWÖLFI         
             break;
         case 1:
         case 13:
@@ -96,7 +96,7 @@ void ledmatrix_set_time( time_t time )
             break;
         case 3:
         case 15:
-            ledmatrix_timerepr[5] = 0b000111000000; //  DRâ€¹
+            ledmatrix_timerepr[5] = 0b000111000000; //  DRÜ
             break;
         case 4:
         case 16:
@@ -104,11 +104,11 @@ void ledmatrix_set_time( time_t time )
             break;           
         case 5:
         case 17:
-            ledmatrix_timerepr[5] = 0b000000111110; // FÃ·IFI
+            ledmatrix_timerepr[5] = 0b000000111110; // FÖIFI
             break;
         case 6:
         case 18:
-            ledmatrix_timerepr[6] = 0b000011111100; // SÆ’CHSI
+            ledmatrix_timerepr[6] = 0b000011111100; // SÄCHSI
             break;
         case 7:
         case 19:
@@ -120,11 +120,11 @@ void ledmatrix_set_time( time_t time )
             break;
         case 9:
         case 21:
-            ledmatrix_timerepr[4] = 0b000000111100; // Nâ€¹NI
+            ledmatrix_timerepr[4] = 0b000000111100; // NÜNI
             break;
         case 10:
         case 22:
-            ledmatrix_timerepr[9] = 0b000000111110; // ZÆ’HNI
+            ledmatrix_timerepr[9] = 0b000000111110; // ZÄHNI
             break;
         case 11:
         case 23:
@@ -135,16 +135,16 @@ void ledmatrix_set_time( time_t time )
             break;
     }         
     
-    //ledmatrix_timerepr[0] = 0b110111100001; // ES ISCH, 12. Col fÂ¸r Minute +1 (oben rechts)
-    //ledmatrix_timerepr[1] = 0b000000000001; // VIERTEL / FÃ·IF, 12. Col fÂ¸r Minute +2 (unten rechts)
-    //ledmatrix_timerepr[2] = 0b000000000001; // ZÆ’H / ZWÆ’NZG,  12. Col fÂ¸r Minute -1 (oben links)
-    //ledmatrix_timerepr[3] = 0b000000000001; // VOR / AB, 12. Col fÂ¸r Minute -2 (unten links)
-    //ledmatrix_timerepr[4] = 0b000000000000; // HALBI / Nâ€¹NI
-    //ledmatrix_timerepr[5] = 0b000000000000; // EIS / DRâ€¹ / FÃ·IFI
-    //ledmatrix_timerepr[6] = 0b000000000000; // ZWEI / SÆ’CHSI
-    //ledmatrix_timerepr[7] = 0b000000111111; // VIERI / ZWÃ·LFI
+    //ledmatrix_timerepr[0] = 0b110111100001; // ES ISCH, 12. Col für Minute +1 (oben rechts)
+    //ledmatrix_timerepr[1] = 0b000000000001; // VIERTEL / FÖIF, 12. Col für Minute +2 (unten rechts)
+    //ledmatrix_timerepr[2] = 0b000000000001; // ZÆ’H / ZWÄNZG,  12. Col für Minute -1 (oben links)
+    //ledmatrix_timerepr[3] = 0b000000000001; // VOR / AB, 12. Col für Minute -2 (unten links)
+    //ledmatrix_timerepr[4] = 0b000000000000; // HALBI / NÜNI
+    //ledmatrix_timerepr[5] = 0b000000000000; // EIS / DRÜ / FÖIFI
+    //ledmatrix_timerepr[6] = 0b000000000000; // ZWEI / SÄCHSI
+    //ledmatrix_timerepr[7] = 0b000000111111; // VIERI / ZWÖLFI
     //ledmatrix_timerepr[8] = 0b000000000000; // ELFI / SIEBNI
-    //ledmatrix_timerepr[9] = 0b000000000000; // ACHTI / ZÆ’HNI
+    //ledmatrix_timerepr[9] = 0b000000000000; // ACHTI / ZÄHNI
 
 }
 
