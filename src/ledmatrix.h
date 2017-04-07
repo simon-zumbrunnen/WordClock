@@ -9,7 +9,7 @@
 #define	LEDMATRIX_H
 
 #include "config.h"
-#include "datetime.h"
+#include "time.h"
 
 #include <pic.h>
 
@@ -41,7 +41,7 @@ extern "C" {
 #endif
     
 void ledmatrix_init();
-void ledmatrix_set_time( datetime_t time );
+void ledmatrix_set_time( time_t time );
 void ledmatrix_display_next_row();
 
 #ifdef	__cplusplus
