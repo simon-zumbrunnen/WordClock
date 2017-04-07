@@ -8,7 +8,7 @@
 uint8_t main( void )
 {      
     ledmatrix_init();
-    datetime_t time;
+    datetime_t time = {2017, 04, 07, 14, 50, 12};
     ledmatrix_set_time(time);
     
     while(1)
