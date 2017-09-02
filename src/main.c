@@ -1,34 +1,54 @@
 
 #include "config.h"
 #include "fuses.h"
+
+#include "i2c.h"
+#include "rtc.h"
 #include "ledmatrix.h"
+#include "timer.h"
 
 #include <xc.h>
 
-uint8_t main( void )
-{      
-    ledmatrix_init();
-    time_t time;
+volatile static uint8_t time_changed = 1;
+static time_t display_time = {0, 0, 0};
+
+static void interrupt timer_isr(void)
+{
+    TMR1IF = 0;   // clear timer 1 interrupt flag
+    TMR1H = 0x0B; // set high timer1 reg to 0xff
+    TMR1L = 0xDC; // set low timer1 reg to 0xff
     
-    uint8_t i, j, k;
-    for (i = 0; i < 24; i++)
+    time_t current_time = rtc_read_time();
+    
+    if (
+               (current_time.hour   != display_time.hour  )
+            || (current_time.minute != display_time.minute)
+            || (current_time.second != display_time.second)
+        )
     {
-        time.hour = i;
-        
-            for (j = 0; j < 60; j++)
-            {
-                time.minute = j;
-                ledmatrix_set_time(time);
-                
-                for (k = 0; k < 50; k++)
-                {
-                    ledmatrix_display_next_row();
-                }
-            }  
+        display_time = current_time;
+        time_changed = 1;
     }
+}
+
+uint8_t main( void )
+{
+    i2c_init();
+    rtc_init();
+    ledmatrix_init();
+    timer_init();
+    
+    time_t init_time = {0, 0, 0};
+    rtc_write_time(init_time);
     
     while(1)
     {
+        if (time_changed)
+        {
+            time_changed = 0;
+            ledmatrix_set_time(display_time);
+        }
+        
         ledmatrix_display_next_row();
     }
     

@@ -14,7 +14,7 @@
 #include <pic.h>
 
 #define LEDMATRIX_NUM_ROWS 10
-#define LED_MATRIX_NUM_COLS 11
+#define LED_MATRIX_NUM_COLS 11+1
 
 #define DEBUG_LED_1_PIN RC0
 #define DEBUG_LED_2_PIN RC1

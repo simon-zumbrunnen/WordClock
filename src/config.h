@@ -10,13 +10,5 @@
 
 #define _XTAL_FREQ 4000000
 
-#ifdef	__cplusplus
-extern "C" {
-#endif
-
-#ifdef	__cplusplus
-}
-#endif
-
 #endif	/* CONFIG_H */
 
