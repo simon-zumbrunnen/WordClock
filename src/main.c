@@ -40,7 +40,7 @@ uint8_t main( void )
     ledmatrix_init();
     timer_init();
     
-    time_t init_time = {16, 30, 0};
+    time_t init_time = {16, 47, 0};
     rtc_write_time(init_time);
     
     while(1)

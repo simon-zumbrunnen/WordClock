@@ -50,6 +50,11 @@ void ledmatrix_set_time( time_t time )
     {
         ledmatrix_timerepr[i] = 0b000000000000;
     }
+
+    /* ES ISCH */
+    {
+        ledmatrix_timerepr[0] |= ESIST;
+    }
     
     uint8_t min = time.minute;
     uint8_t h = time.hour;
@@ -110,7 +115,7 @@ void ledmatrix_set_time( time_t time )
         case 0:
         case 12:
         case 24:
-            ledmatrix_timerepr[7] |= ZWOELF; // ZWÖLFI         
+            ledmatrix_timerepr[7] |= ZWOELF; // ZWï¿½LFI         
             break;
         case 1:
         case 13:
@@ -122,7 +127,7 @@ void ledmatrix_set_time( time_t time )
             break;
         case 3:
         case 15:
-            ledmatrix_timerepr[5] |= DREI; //  DRÜ
+            ledmatrix_timerepr[5] |= DREI; //  DRï¿½
             break;
         case 4:
         case 16:
@@ -130,11 +135,11 @@ void ledmatrix_set_time( time_t time )
             break;           
         case 5:
         case 17:
-            ledmatrix_timerepr[5] |= FUENF; // FÖIFI
+            ledmatrix_timerepr[5] |= FUENF; // Fï¿½IFI
             break;
         case 6:
         case 18:
-            ledmatrix_timerepr[6] |= SECHS; // SÄCHSI
+            ledmatrix_timerepr[6] |= SECHS; // Sï¿½CHSI
             break;
         case 7:
         case 19:
@@ -146,11 +151,11 @@ void ledmatrix_set_time( time_t time )
             break;
         case 9:
         case 21:
-            ledmatrix_timerepr[4] |= NEUN; // NÜNI
+            ledmatrix_timerepr[4] |= NEUN; // Nï¿½NI
             break;
         case 10:
         case 22:
-            ledmatrix_timerepr[9] |= ZEHN; // ZÄHNI
+            ledmatrix_timerepr[9] |= ZEHN; // Zï¿½HNI
             break;
         case 11:
         case 23:

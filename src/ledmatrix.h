@@ -13,6 +13,8 @@
 
 #include <pic.h>
 
+#define ESIST     0b110111100000
+
 #define VOR       0b000111000000
 #define AB        0b000000011000
 
