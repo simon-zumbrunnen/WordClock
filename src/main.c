@@ -19,6 +19,8 @@ static void interrupt timer_isr(void)
     TMR1L = 0xDC; // set low timer1 reg to 0xff
     
     time_t current_time = rtc_read_time();
+        
+    current_time.minute++;
     
     if (
                (current_time.hour   != display_time.hour  )
@@ -38,7 +40,7 @@ uint8_t main( void )
     ledmatrix_init();
     timer_init();
     
-    time_t init_time = {0, 0, 0};
+    time_t init_time = {16, 30, 0};
     rtc_write_time(init_time);
     
     while(1)

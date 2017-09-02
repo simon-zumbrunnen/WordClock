@@ -13,6 +13,29 @@
 
 #include <pic.h>
 
+#define VOR       0b000111000000
+#define AB        0b000000011000
+
+#define FUENFAB   0b000000011110
+#define ZEHNAB    0b011100000000
+#define VIERTEL   0b111111100000
+#define ZWANZIG   0b000001111110
+#define HALB      0b111110000000
+
+#define EINS      0b111000000000
+#define ZWEI      0b111100000000
+#define DREI      0b000111000000
+#define VIER      0b111110000000
+#define FUENF     0b000000111110
+#define SECHS     0b000011111110
+#define SIEBEN    0b000011111110
+#define ACHT      0b111110000000
+#define NEUN      0b000000111100
+#define ZEHN      0b000000111110
+#define ELF       0b111100000000
+#define ZWOELF    0b000001111110
+
+
 #define LEDMATRIX_NUM_ROWS 10
 #define LED_MATRIX_NUM_COLS 11+1
 

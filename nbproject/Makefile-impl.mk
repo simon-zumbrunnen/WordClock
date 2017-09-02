@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=QlockTwo.X
+PROJECTNAME=QlockTwo
 
 # Active Configuration
 DEFAULTCONF=default
