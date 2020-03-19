@@ -11,5 +11,8 @@
   "devDependencies": {
     "cross-env": "^7.0.2",
     "nodemon": "^2.0.2"
+  },
+  "engines" : {
+    "node" : ">=10.16.2"
   }
 }
