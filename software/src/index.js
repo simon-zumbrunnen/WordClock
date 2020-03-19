@@ -139,7 +139,7 @@ function run(serialport) {
 }
 
 const SerialPort = require('serialport');
-const serialport = new SerialPort('/dev/tty.SLAB_USBtoUART');
+const serialport = new SerialPort('/dev/ttyS0');
 
 serialport.on('open', () => {
     run(serialport);
