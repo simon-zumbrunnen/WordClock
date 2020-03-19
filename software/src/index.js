@@ -138,12 +138,10 @@ function run(serialport) {
     }, 1000)
 }
 
-if (IS_DEVELOPMENT) {
-    const SerialPort = require('serialport');
-    const serialport = new SerialPort('/dev/tty.SLAB_USBtoUART');
+const SerialPort = require('serialport');
+const serialport = new SerialPort('/dev/tty.SLAB_USBtoUART');
 
-    serialport.on('open', () => {
-        run(serialport);
-    });
-    serialport.on('error', error => console.log(error));
-}
+serialport.on('open', () => {
+    run(serialport);
+});
+serialport.on('error', error => console.log(error));

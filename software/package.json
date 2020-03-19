@@ -4,9 +4,11 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/index.js"
   },
+  "dependencies": {
+    "serialport": "^8.0.7"
+  },
   "devDependencies": {
     "cross-env": "^7.0.2",
-    "nodemon": "^2.0.2",
-    "serialport": "^8.0.7"
+    "nodemon": "^2.0.2"
   }
 }
