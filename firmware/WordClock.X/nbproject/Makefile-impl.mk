@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=firmware
+PROJECTNAME=WordClock.X
 
 # Active Configuration
 DEFAULTCONF=default

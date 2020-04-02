@@ -1,7 +1,6 @@
 
 #include "config.h"
 #include "ledmatrix.h"
-#include <stdint.h>
 #include <xc.h>
 
 static uint16_t ledmatrix_timerepr[LEDMATRIX_NUM_ROWS];

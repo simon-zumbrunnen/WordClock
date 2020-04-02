@@ -8,7 +8,7 @@
 #include "config.h"
 #include "uart.h"
 
-#include <xc.h>
+#include <pic.h>
 
 void uart_init( const unsigned long baudrate )
 {

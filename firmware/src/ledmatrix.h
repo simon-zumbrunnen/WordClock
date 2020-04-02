@@ -9,17 +9,12 @@
 #define	LEDMATRIX_H
 
 #include "config.h"
-#include "time.h"
 
 #include <pic.h>
+#include <stdint.h>
 
 #define LEDMATRIX_NUM_ROWS 10
 #define LEDMATRIX_NUM_COLS 12
-
-#define DEBUG_LED_1_PIN RC0
-#define DEBUG_LED_2_PIN RC1
-#define DEBUG_LED_1_TRIS TRISC0
-#define DEBUG_LED_2_TRIS TRISC1
     
 #define LEDMATRIX_ANODE_PORT_1 PORTA
 #define LEDMATRIX_ANODE_PORT_2 PORTD

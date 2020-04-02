@@ -7,12 +7,22 @@
 
 #include <xc.h>
 
+#define DEBUG_LED_1_PIN RC0
+#define DEBUG_LED_2_PIN RC1
+#define DEBUG_LED_1_TRIS TRISC0
+#define DEBUG_LED_2_TRIS TRISC1
+
 static uint16_t timerepr[LEDMATRIX_NUM_ROWS];
 volatile static int word_count = 0;
 volatile static int byte_count = 0;
 
 int main( void )
 {
+    DEBUG_LED_1_TRIS = 0;
+    DEBUG_LED_2_TRIS = 0;
+    
+    DEBUG_LED_1_PIN = 1;
+    
     // Set clock to 8 MHz
     IRCF0 = 1;
     IRCF1 = 1;
@@ -61,5 +71,7 @@ void __interrupt () interrupt_service_routine (void)
         
         byte_count++;
         RCIF = 0;
+        
+        DEBUG_LED_2_PIN = !DEBUG_LED_2_PIN;
     }
 }
