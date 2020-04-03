@@ -1,49 +1,64 @@
 const IS_DEVELOPMENT = process.env !== 'production';
-
 const LEDMATRIX_NUM_ROWS = 10;
+const LEDMATRIX_NUM_COLS= 11;
 
-const ES_ISCH = 0b110111100000;
-const VIERTEL = 0b111111100000;
-const FOEIF = 0b000000011110;
-const ZAEH = 0b011100000000;
-const ZWAENZG = 0b000001111110;
-const VOR = 0b000111000000;
-const AB = 0b000000011000;
-const HALBI = 0b111110000000;
-const NUENI = 0b000000111100;
-const EIS = 0b111000000000;
-const DRUE = 0b000111000000;
-const FOEIFI = 0b000000111110;
-const ZWEI = 0b111100000000;
-const SAECHSI = 0b000011111110;
-const VIERI = 0b111110000000;
-const ZWOELFI = 0b000001111110;
-const ELFI = 0b111100000000;
-const SIEBNI = 0b000011111110;
-const ACHTI = 0b111110000000;
-const ZAEHNI = 0b000000111110;
+let clock;
 
-function run(serialport) {
+if (IS_DEVELOPMENT) {
+    clock = require('./mock-clock');
+} else {
+    const { Dotstar } = require('dotstar');
+    const SPI = require('pi-spi');
+    const spi = SPI.initialize('/dev/spidev0.0');
+    clock = new Dotstar(spi, {
+        length: LEDMATRIX_NUM_ROWS*LEDMATRIX_NUM_COLS
+    });
+}
+
+const ES_ISCH = [0, 1, 3, 4, 5, 6];
+const VIERTEL = [15, 16, 17, 18, 19, 20, 21];
+const FOEIF = [11, 12, 13, 14];
+const ZAEH = [23, 24, 25];
+const ZWAENZG = [27, 28, 29, 30, 31, 32];
+const VOR = [38, 39, 40];
+const AB = [35, 36];
+const HALBI = [44, 45, 46, 47, 48];
+const NUENI = [50, 51, 52, 53];
+const EIS = [63, 64, 65];
+const DRUE = [60, 61, 62];
+const FOEIFI = [55, 56, 57, 58, 59];
+const ZWEI = [66, 67, 68, 69];
+const SAECHSI = [70, 71, 72, 73, 74, 75];
+const VIERI = [83, 84, 85, 86, 87];
+const ZWOELFI = [77, 78, 79, 80, 81, 82];
+const ELFI = [88, 89, 90, 91];
+const SIEBNI = [92, 93, 94, 95, 96, 97];
+const ACHTI = [105, 106, 107, 108, 109];
+const ZAEHNI = [99, 100, 101, 102, 103];
+
+function run() {
     setInterval(() => {
-        let timerepr = new Array(LEDMATRIX_NUM_ROWS).fill(0);
+        let timerepr = [];
     
         const date = new Date();
     
         let h = date.getHours();
         const min = date.getMinutes();
     
-        timerepr[0] |= (ES_ISCH);
+        timerepr.push(ES_ISCH);
     
         if ( min > 22 ) {
             h++;
-        }      
+        }
       
         if (   ( min >  2 && min < 23 )
             || ( min > 32 && min < 38 )
         ) {
-            timerepr[3] |= AB;
-        } else if (( min > 22 && min < 29 ) || ( min > 37 && min < 58 )) {
-            timerepr[3] |= VOR;
+            timerepr.push(AB);
+        } else if (( min > 22 && min < 29 )
+            || ( min > 37 && min < 58 )
+        ) {
+            timerepr.push(VOR);
         }
             
         if (   ( min >  2 && min <  8 ) 
@@ -51,97 +66,91 @@ function run(serialport) {
             || ( min > 32 && min < 38 )
             || ( min > 52 && min < 58 )
         ) {
-            timerepr[1] |= FOEIF;
+            timerepr.push(FOEIF);
         }
         else if (   ( min >  7 && min < 13 ) 
                  || ( min > 47 && min < 53 )
         ) {
-            timerepr[2] |= ZAEH;
+            timerepr.push(ZAEH);
         }
         else if (   ( min > 12 && min < 18 ) 
                  || ( min > 42 && min < 48 )
         ) {
-            timerepr[1] |= VIERTEL;
+            timerepr.push(VIERTEL);
         }
         else if (   ( min > 17 && min < 23 ) 
                  || ( min > 37 && min < 43 )
         ) {
-            timerepr[2] |= ZWAENZG;
+            timerepr.push(ZWAENZG);
         }
         
         if (   ( min > 22 && min < 38 ) 
         ) {
-            timerepr[4] |= HALBI;
+            timerepr.push(HALBI);
         }
             
         switch (h) {
             case 0:
             case 12:
             case 24:
-                timerepr[7] |= ZWOELFI;      
+                timerepr.push(ZWOELFI);      
                 break;
             case 1:
             case 13:
-                timerepr[5] |= EIS;
+                timerepr.push(EIS);
                 break;
             case 2:
             case 14:
-                timerepr[6] |= ZWEI;
+                timerepr.push(ZWEI);
                 break;
             case 3:
             case 15:
-                timerepr[5] |= DRUE;
+                timerepr.push(DRUE);
                 break;
             case 4:
             case 16:
-                timerepr[7] |= VIERI;
+                timerepr.push(VIERI);
                 break;           
             case 5:
             case 17:
-                timerepr[5] |= FOEIFI;
+                timerepr.push(FOEIFI);
                 break;
             case 6:
             case 18:
-                timerepr[6] |= SAECHSI;
+                timerepr.push(SAECHSI);
                 break;
             case 7:
             case 19:
-                timerepr[8] |= SIEBNI;
+                timerepr.push(SIEBNI);
                 break; 
             case 8:
             case 20:
-                timerepr[9] |= ACHTI;
+                timerepr.push(ACHTI);
                 break;
             case 9:
             case 21:
-                timerepr[4] |= NUENI;
+                timerepr.push(NUENI);
                 break;
             case 10:
             case 22:
-                timerepr[9] |= ZAEHNI;
+                timerepr.push(ZAEHNI);
                 break;
             case 11:
             case 23:
-                timerepr[8] |= ELFI;
+                timerepr.push(ELFI);
                 break;            
             default:
                 break;
         }
 
-        serialport.write([0x1f, 0xff]);
-
-        for (let row of timerepr) {
-            serialport.write([row>>8, row]);
+        clock.all(0, 0, 0);
+        for (const led of [].concat(...timerepr)) {
+            clock.set(led, 255, 255, 255);
         }
 
-        serialport.write([0xff, 0xff]);
-    }, 1000)
+        clock.sync();
+
+    }, 100);
 }
 
-const SerialPort = require('serialport');
-const serialport = new SerialPort('/dev/ttyS0');
-
-serialport.on('open', () => {
-    run(serialport);
-});
-serialport.on('error', error => console.log(error));
+run();
