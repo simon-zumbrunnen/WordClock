@@ -1,4 +1,4 @@
-const IS_DEVELOPMENT = process.env !== 'production';
+const IS_DEVELOPMENT = process.env.NODE_ENV !== 'production';
 const LEDMATRIX_NUM_ROWS = 10;
 const LEDMATRIX_NUM_COLS= 11;
 
