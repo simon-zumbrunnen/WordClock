@@ -1,3 +1,2 @@
+node_modules
 .DS_Store
-/firmware/WordClock.X/build/
-/firmware/WordClock.X/dist/
