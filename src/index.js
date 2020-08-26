@@ -3,6 +3,7 @@ const LEDMATRIX_NUM_ROWS = 10;
 const LEDMATRIX_NUM_COLS= 11;
 
 let clock;
+const NUM_LEDS = LEDMATRIX_NUM_ROWS*LEDMATRIX_NUM_COLS + 4;
 
 if (IS_DEVELOPMENT) {
     clock = require('./mock-clock');
@@ -11,7 +12,7 @@ if (IS_DEVELOPMENT) {
     const SPI = require('pi-spi');
     const spi = SPI.initialize('/dev/spidev0.0');
     clock = new Dotstar(spi, {
-        length: LEDMATRIX_NUM_ROWS*LEDMATRIX_NUM_COLS
+        length: NUM_LEDS
     });
 }
 
@@ -38,8 +39,18 @@ const ZAEHNI = [4, 3, 2, 1, 0];
 
 const DOTS = [111, 110, 113, 112];
 
+let startupCounter = 0;
+
 function run() {
     setInterval(() => {
+        if (startupCounter < NUM_LEDS) {
+            clock.all(0, 0, 0);
+            clock.set(startupCounter, 255, 255, 255);
+            startupCounter++;
+            clock.sync();
+            return;
+        }
+        
         let timerepr = [];
     
         const date = new Date();
