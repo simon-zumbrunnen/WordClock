@@ -36,6 +36,8 @@ const SIEBNI = [15, 16, 17, 18, 19, 20];
 const ACHTI = [10, 9, 8, 7, 6];
 const ZAEHNI = [4, 3, 2, 1, 0];
 
+const DOTS = [111, 110, 113, 112];
+
 function run() {
     setInterval(() => {
         let timerepr = [];
@@ -47,44 +49,44 @@ function run() {
     
         timerepr.push(ES_ISCH);
     
-        if ( min > 22 ) {
+        if ( min >= 25 ) {
             h++;
         }
       
-        if (   ( min >  2 && min < 23 )
-            || ( min > 32 && min < 38 )
+        if (   ( min >=  5 && min < 25 )
+            || ( min >= 35 && min < 38 )
         ) {
             timerepr.push(AB);
-        } else if (( min > 22 && min < 29 )
-            || ( min > 37 && min < 58 )
+        } else if (   ( min > 22 && min < 29 )
+                   || ( min >= 35 && min < 60 )
         ) {
             timerepr.push(VOR);
         }
             
-        if (   ( min >  2 && min <  8 ) 
-            || ( min > 22 && min < 28 )
-            || ( min > 32 && min < 38 )
-            || ( min > 52 && min < 58 )
+        if (   ( min >=  5 && min < 10 ) 
+            || ( min >= 25 && min < 30 )
+            || ( min >= 35 && min < 40 )
+            || ( min >= 55 && min < 60 )
         ) {
             timerepr.push(FOEIF);
         }
-        else if (   ( min >  7 && min < 13 ) 
-                 || ( min > 47 && min < 53 )
+        else if (   ( min >  5 && min < 15 ) 
+                 || ( min >= 50 && min < 55 )
         ) {
             timerepr.push(ZAEH);
         }
-        else if (   ( min > 12 && min < 18 ) 
-                 || ( min > 42 && min < 48 )
+        else if (   ( min >= 15 && min < 20 ) 
+                 || ( min >= 45 && min < 50 )
         ) {
             timerepr.push(VIERTEL);
         }
-        else if (   ( min > 17 && min < 23 ) 
-                 || ( min > 37 && min < 43 )
+        else if (   ( min >= 20 && min < 25 ) 
+                 || ( min >= 40 && min < 45 )
         ) {
             timerepr.push(ZWAENZG);
         }
         
-        if (   ( min > 22 && min < 38 ) 
+        if (   ( min >= 25 && min < 40 ) 
         ) {
             timerepr.push(HALBI);
         }
@@ -142,6 +144,23 @@ function run() {
             default:
                 break;
         }
+
+        if (min%5 > 0) {
+            timerepr.push(DOTS[0]);
+        }
+
+        if (min%5 > 1) {
+            timerepr.push(DOTS[1]);
+        }
+
+        if (min%5 > 2) {
+            timerepr.push(DOTS[2]);
+        }
+
+        if (min%5 > 3) {
+            timerepr.push(DOTS[3]);
+        }
+
 
         clock.all(0, 0, 0);
         for (const led of [].concat(...timerepr)) {
