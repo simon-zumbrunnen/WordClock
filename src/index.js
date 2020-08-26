@@ -54,7 +54,7 @@ function run() {
         }
       
         if (   ( min >=  5 && min < 25 )
-            || ( min >= 35 && min < 38 )
+            || ( min >= 35 && min < 40 )
         ) {
             timerepr.push(AB);
         } else if (   ( min > 22 && min < 29 )
