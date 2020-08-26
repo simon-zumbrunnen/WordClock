@@ -10,8 +10,9 @@
     "pi-spi": "^1.2.1"
   },
   "devDependencies": {
+    "blessed": "^0.1.81",
     "cross-env": "^7.0.2",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.4"
   },
   "engines": {
     "node": ">=10.x"

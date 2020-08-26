@@ -15,26 +15,26 @@ if (IS_DEVELOPMENT) {
     });
 }
 
-const ES_ISCH = [0, 1, 3, 4, 5, 6];
-const VIERTEL = [15, 16, 17, 18, 19, 20, 21];
-const FOEIF = [11, 12, 13, 14];
-const ZAEH = [23, 24, 25];
-const ZWAENZG = [27, 28, 29, 30, 31, 32];
-const VOR = [38, 39, 40];
-const AB = [35, 36];
-const HALBI = [44, 45, 46, 47, 48];
-const NUENI = [50, 51, 52, 53];
-const EIS = [63, 64, 65];
-const DRUE = [60, 61, 62];
-const FOEIFI = [55, 56, 57, 58, 59];
-const ZWEI = [66, 67, 68, 69];
-const SAECHSI = [70, 71, 72, 73, 74, 75];
-const VIERI = [83, 84, 85, 86, 87];
-const ZWOELFI = [77, 78, 79, 80, 81, 82];
-const ELFI = [88, 89, 90, 91];
-const SIEBNI = [92, 93, 94, 95, 96, 97];
-const ACHTI = [105, 106, 107, 108, 109];
-const ZAEHNI = [99, 100, 101, 102, 103];
+const ES_ISCH = [99, 100, 102, 103, 104, 105];
+const VIERTEL = [98, 97, 96, 95, 94, 93, 92];
+const FOEIF = [91, 90, 89, 88];
+const ZAEH = [78, 79, 80];
+const ZWAENZG = [82, 83, 84, 85, 85, 86, 87];
+const VOR = [73, 72, 71];
+const AB = [69, 68];
+const HALBI = [55, 56, 57, 58, 59];
+const NUENI = [61, 62, 63, 64];
+const EIS = [54, 53, 52];
+const DRUE = [51, 50, 49];
+const FOEIFI = [48, 47, 46, 45, 44];
+const ZWEI = [33, 34, 35, 36];
+const SAECHSI = [37, 38, 39, 40, 41, 42];
+const VIERI = [32, 31, 30, 29, 28];
+const ZWOELFI = [27, 26, 25, 24, 23, 22];
+const ELFI = [11, 12, 13, 14];
+const SIEBNI = [15, 16, 17, 18, 19, 20];
+const ACHTI = [10, 9, 8, 7, 6];
+const ZAEHNI = [4, 3, 2, 1, 0];
 
 function run() {
     setInterval(() => {

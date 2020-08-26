@@ -1,59 +1,53 @@
-const clock = [
-    'ESBISCHDSON',
-    'VIERTELFÖIF',
-    'AZÄHEZWÄNZG',
-    'NÖIVORSABEH',
-    'HALBISNÜNIE',
-    'EISDRÜFÖIFI',
-    'ZWEISÄCHSIE',
-    'VIERIZWÖLFI',
+const { screen, text } = require('blessed');
+
+const clock = screen({
+    smartCSR: true
+});
+
+const letters = [
+    'INHÄZNITHCA',
     'ELFISIEBNIE',
-    'ACHTINZÄHNI'
+    'IFLÖWZIREIV',
+    'ZWEISÄCHSIE',
+    'IFIÖFÜRDSIE',
+    'HALBISNÜNIE',
+    'HEBASROVIÖN',
+    'AZÄHEZWÄNZG',
+    'FIÖFLETREIV',
+    'ESBISCHDSON'
 ];
 
-let colors = [];
+for (let row = 0; row < letters.length; row++) {   
+    for (let column = 0; column < letters[0].length; column++) {
+        const letter = text({
+            content: letters[row][column],
+            top: letters.length - 1 - row,
+            left: row%2 === 0 ? letters[0].length - 1 - column : column,
+            style: {
+                fg: 'black',
+                bg: 'black'
+            }
+        });
 
-for (let row = 0; row < clock.length; row++) {
-    let rowColors = [];
-    
-    for (let letter = 0; letter < clock[0].length; letter++) {
-        rowColors.push([0, 0, 0]);
+        clock.append(letter);
     }
-
-    colors.push(rowColors);
 }
 
 module.exports = {
     all: (r, g, b, a=1) => {
-        for (let row = 0; row < clock.length; row++) {            
-            for (let letter = 0; letter < clock[0].length; letter++) {
-                colors[row][letter] = [r*a, g*a, b*a];
-            }
+        for (let letter of clock.children) {
+            letter.style.transparent = a < 1;
+            letter.style.fg = r ? 'white' : 'black';
         }
     },
     set: (n, r, g, b, a=1) => {
-        const row = Math.ceil((n + 1)/(clock[0].length)) - 1;
-        const letter = n%clock[0].length;
 
-        if (row%2 === 0) {
-            colors[row][letter] = [r*a, g*a, b*a];
-        } else {
-            colors[row][clock[0].length - 1 - letter] = [r*a, g*a, b*a];
-        }
+        const letter = clock.children[n]
+
+        letter.style.transparent = a < 1;
+        letter.style.fg = r ? 'white' : 'black';
     },
     sync: () => {
-        console.log('-----------')
-        for (let row = 0; row < clock.length; row++) {
-            let rowText = '';
-            for (let letter = 0; letter < clock[0].length; letter++) {
-                if (colors[row][letter][0] === 255) {
-                    rowText += clock[row][letter];
-                } else {
-                    rowText += ' ';
-                }
-            }
-
-            console.log(rowText);
-        }
+        clock.render();
     }
 }
