@@ -81,7 +81,7 @@ function run() {
         ) {
             timerepr.push(FOEIF);
         }
-        else if (   ( min >  5 && min < 15 ) 
+        else if (   ( min >=  5 && min < 15 ) 
                  || ( min >= 50 && min < 55 )
         ) {
             timerepr.push(ZAEH);
