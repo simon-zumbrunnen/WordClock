@@ -68,7 +68,7 @@ function run() {
             || ( min >= 35 && min < 40 )
         ) {
             timerepr.push(AB);
-        } else if (   ( min > 22 && min < 29 )
+        } else if (   ( min > 22 && min < 30 )
                    || ( min >= 35 && min < 60 )
         ) {
             timerepr.push(VOR);
