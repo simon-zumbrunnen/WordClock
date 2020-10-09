@@ -52,6 +52,7 @@ function run() {
         }
         
         let timerepr = [];
+        let dotrepr = [];
     
         const date = new Date();
     
@@ -157,25 +158,29 @@ function run() {
         }
 
         if (min%5 > 0) {
-            timerepr.push(DOTS[0]);
+            dotrepr.push(DOTS[0]);
         }
 
         if (min%5 > 1) {
-            timerepr.push(DOTS[1]);
+            dotrepr.push(DOTS[1]);
         }
 
         if (min%5 > 2) {
-            timerepr.push(DOTS[2]);
+            dotrepr.push(DOTS[2]);
         }
 
         if (min%5 > 3) {
-            timerepr.push(DOTS[3]);
+            dotrepr.push(DOTS[3]);
         }
 
 
         clock.all(0, 0, 0);
         for (const led of [].concat(...timerepr)) {
             clock.set(led, 255, 255, 255);
+        }
+
+        for (const led of [].concat(...dotrepr)) {
+            clock.set(led, 127, 127, 127);
         }
 
         clock.sync();
