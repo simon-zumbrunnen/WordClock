@@ -180,7 +180,7 @@ function run() {
         }
 
         for (const led of [].concat(...dotrepr)) {
-            clock.set(led, 255, 33, 33);
+            clock.set(led, 51, 51, 51);
         }
 
         clock.sync();
