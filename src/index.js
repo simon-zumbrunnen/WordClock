@@ -177,7 +177,7 @@ function run() {
         clock.all(0, 0, 0);
         for (const led of [].concat(...timerepr)) {
             if (h > 21 && h < 8) {
-                clock.set(led, 33, 33, 33);
+                clock.set(led, 3, 3, 3);
               } else {
                 clock.set(led, 204, 204, 204);
               }
@@ -185,7 +185,7 @@ function run() {
 
         for (const led of [].concat(...dotrepr)) {
             if (h > 21 && h < 8) {
-                clock.set(led, 12, 12, 12);
+                clock.set(led, 1, 1, 1);
               } else {
                 clock.set(led, 51, 51, 51);
               }
