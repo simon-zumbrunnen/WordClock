@@ -176,16 +176,23 @@ function run() {
 
         clock.all(0, 0, 0);
         for (const led of [].concat(...timerepr)) {
-            clock.set(led, 255, 255, 255);
+            if (h > 21 && h < 8) {
+                clock.set(led, 33, 33, 33);
+              } else {
+                clock.set(led, 204, 204, 204);
+              }
         }
 
         for (const led of [].concat(...dotrepr)) {
-            clock.set(led, 51, 51, 51);
+            if (h > 21 && h < 8) {
+                clock.set(led, 12, 12, 12);
+              } else {
+                clock.set(led, 51, 51, 51);
+              }
         }
 
         clock.sync();
 
     }, 100);
 }
-
 run();
