@@ -81,11 +81,20 @@ const dot3 = text({
 
 clock.append(dot3);
 
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+  
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
 module.exports = {
     all: (r, g, b, a=1) => {
         for (let letter of clock.children) {
             letter.style.transparent = a < 1;
-            letter.style.fg = r ? 'white' : 'black';
+            letter.style.fg = rgbToHex(r, g, b);
         }
     },
     set: (n, r, g, b, a=1) => {
@@ -93,7 +102,7 @@ module.exports = {
         const letter = clock.children[n]
 
         letter.style.transparent = a < 1;
-        letter.style.fg = r ? 'white' : 'black';
+        letter.style.fg = rgbToHex(r, g, b);
     },
     sync: () => {
         clock.render();
