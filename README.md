@@ -9,4 +9,4 @@ In development mode a simulation of the clock is loaded.
 
 
 ## Video
-![Watch the Famous self-made Word Clock in action on YouTube](https://i9.ytimg.com/vi/3srQNBeWttM/mq1.jpg?sqp=CKTRv4kG&rs=AOn4CLAdsGnX8evnOm9JpM7tzOzKEmqzMg)
+[![Watch the Famous self-made Word Clock in action on YouTube](https://i9.ytimg.com/vi/3srQNBeWttM/mq1.jpg?sqp=CKTRv4kG&rs=AOn4CLAdsGnX8evnOm9JpM7tzOzKEmqzMg)](https://youtu.be/3srQNBeWttM)
